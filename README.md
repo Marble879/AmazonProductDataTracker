@@ -1,3 +1,6 @@
+
+# AmazonPriceTracker
+
 ## What are you going to make?
 
 This project will take a link to a product on amazon. The program will then scrape the website, and return price details on the product.
