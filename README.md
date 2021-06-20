@@ -11,5 +11,5 @@ Rather than having to open the web browser, go to amazon, and search for the pro
 
 ## How are you going to make it?
 
-This will be made by using java, the jsoup library and Maven.
+This will be made by using java, the jsoup library and Gradle.
 
