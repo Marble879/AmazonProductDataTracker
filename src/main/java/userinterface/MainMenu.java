@@ -1,10 +1,12 @@
 package userinterface;
+import utils.InputClass;
 import utils.IoUtils;
 
 public class MainMenu {
 
-    public int startMenu() {
-        System.out.println("Please select an option: "+ IoUtils.EOL + "1. View tracked items" + IoUtils.EOL + "2. Add a new item to be tracked" + IoUtils.EOL + "3. exit" + IoUtils.EOL);
+    public int startMenu() throws Exception{
+        int choice = InputClass.readInt("Please select an option: "+ IoUtils.EOL + "1. View tracked items" + IoUtils.EOL + "2. Add a new item to be tracked" + IoUtils.EOL + "3. exit" + IoUtils.EOL);
+        return choice;
     }
 
     public void addUrlMenu(){
