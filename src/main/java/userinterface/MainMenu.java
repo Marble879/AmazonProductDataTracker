@@ -3,7 +3,7 @@ import utils.IoUtils;
 
 public class MainMenu {
 
-    public void startMenu() {
+    public int startMenu() {
         System.out.println("Please select an option: "+ IoUtils.EOL + "1. View tracked items" + IoUtils.EOL + "2. Add a new item to be tracked" + IoUtils.EOL + "3. exit" + IoUtils.EOL);
     }
 
@@ -19,8 +19,16 @@ public class MainMenu {
         System.out.println("Please input the URL: " + IoUtils.EOL);
     }
 
-    public void addEmailAddressMessage() { // Will be used by sssetupNotiicationsMenu()
+    public void addEmailAddressMessage() { // Will be used by setupNotiicationsMenu()
         System.out.println("Please input your email: " + IoUtils.EOL);
+    }
+
+    public void exitingMessage(){
+        System.out.println("Exiting...");
+    }
+
+    public void returningMessage(){
+        System.out.println("Returning...");
     }
 
 }
