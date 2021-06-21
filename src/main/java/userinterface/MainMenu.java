@@ -11,11 +11,11 @@ public class MainMenu {
         System.out.println("Please input the URL: ");
     }
 
-    public void setupNotifications(){
+    public void setupNotificationsMenu(){
         System.out.println();
     }
 
-    private void addEmailAddress(){
+    private void addEmailAddressMenu(){
 
     }
 
