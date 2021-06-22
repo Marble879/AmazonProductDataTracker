@@ -5,7 +5,7 @@ import utils.IoUtils;
 public class MainMenu {
 
     public int startMenu() throws Exception{
-        int choice = InputClass.readInt("Please select an option: "+ IoUtils.EOL + "1. View tracked items" + IoUtils.EOL + "2. Add a new item to be tracked" + IoUtils.EOL + "3. exit" + IoUtils.EOL);
+        int choice = InputClass.readInt("Please select an option: "+ IoUtils.EOL + "1. View tracked items" + IoUtils.EOL + "2. Add a new item to be tracked" + IoUtils.EOL + "3. Setup notifications" + IoUtils.EOL + "4. exit" + IoUtils.EOL);
         return choice;
     }
 
@@ -31,6 +31,14 @@ public class MainMenu {
 
     public void returningMessage(){
         System.out.println("Returning...");
+    }
+
+    public void viewTrackedItems(){
+        System.out.println("Currently tracked items: ");
+    }
+
+    public void invalidMenuInputMessage(){
+        System.out.println("Error, invalid input. Please re-enter a menu option: " + IoUtils.EOL);
     }
 
 }
