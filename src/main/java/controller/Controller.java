@@ -29,8 +29,16 @@ public class Controller {
         } while (!(choice == 4));
     }
 
-    private void addUrlMenu(){
-        menu.addUrlMenu();
+    private void addUrlMenu() throws Exception{
+        int choice;
+        do{
+            choice = menu.addUrlMenu();
+            switch (choice) {
+                case 1 -> addNewURL();
+                case 2 -> returningMenuMessage();
+                default -> invalidMenuInputMessage();
+            }
+        } while (!(choice == 2));
     }
 
     private void viewTrackedItems(){
@@ -49,4 +57,13 @@ public class Controller {
         menu.invalidMenuInputMessage();
     }
 
+    private String addNewURL(){
+        String URL;
+        URL = menu.addNewURL();
+        return URL;
+    }
+
+    private void returningMenuMessage(){
+        menu.returningMessage();
+    }
 }

@@ -9,16 +9,19 @@ public class MainMenu {
         return choice;
     }
 
-    public void addUrlMenu(){
-        System.out.println("Please select an option: " + IoUtils.EOL + "1. Add a new URL" + "2. return" + IoUtils.EOL);
+    public int addUrlMenu() throws Exception {
+        int choice = InputClass.readInt("Please select an option: " + IoUtils.EOL + "1. Add a new URL" + IoUtils.EOL + "2. return" + IoUtils.EOL);
+        return choice;
     }
 
     public void setupNotificationsMenu(){
         System.out.println("Please select an option: " + IoUtils.EOL + "1. Enable notifications" + IoUtils.EOL + "2. Disable notifications" + IoUtils.EOL + "3. return" + IoUtils.EOL);
     }
 
-    public void addNewURLMessage(){ // will be used by the addUrlMenu()
-        System.out.println("Please input the URL: " + IoUtils.EOL);
+    public String addNewURL(){ // will be used by the addUrlMenu()
+        String URL;
+        URL = InputClass.readLine("Please input the URL: " + IoUtils.EOL);
+        return URL;
     }
 
     public void addEmailAddressMessage() { // Will be used by setupNotiicationsMenu()
