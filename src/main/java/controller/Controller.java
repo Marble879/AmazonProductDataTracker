@@ -25,7 +25,6 @@ public class Controller {
                 case 4 -> exitingMessage();
                 default -> invalidMenuInputMessage();
             }
-            //System.out.println(choice);
         } while (!(choice == 4));
     }
 
