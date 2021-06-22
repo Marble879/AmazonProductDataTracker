@@ -4,7 +4,7 @@ import userinterface.MainMenu;
 
 public class Controller {
 
-    private MainMenu menu;
+    private final MainMenu menu;
 
     public Controller(MainMenu menu){
         this.menu = menu;
