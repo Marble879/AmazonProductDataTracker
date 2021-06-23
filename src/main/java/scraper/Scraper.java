@@ -4,11 +4,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-/*
-TODO: does each item page have same html?
-TODO: Do we need to consider currency - if so, then that could potentially be an attribute in the scraper?
- */
-
 public class Scraper {
 
     Document doc;
