@@ -1,5 +1,5 @@
 
-# AmazonPriceTracker
+# AmazonProductDataTracker
 
 ## What are you going to make?
 
