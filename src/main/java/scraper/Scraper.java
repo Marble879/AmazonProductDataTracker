@@ -12,22 +12,14 @@ TODO: Do we need to consider currency - if so, then that could potentially be an
 public class Scraper {
 
     Document doc;
-    String title;
-    Elements codes;
-    Elements content;
 
-    public Scraper(String websiteUrl, Elements content, Elements code){
+    public Scraper(String websiteUrl){
 
         try {
             doc = Jsoup.connect(websiteUrl).get();
         } catch(Exception e){
             e.printStackTrace();
         }
-
-        // TODO pass content and codes as parameters!
-        this.content = content;
-        this.codes = code;
-        this.title = doc.title();
     }
 
     public Document getDoc() {
@@ -38,17 +30,11 @@ public class Scraper {
         this.doc = doc;
     }
 
-    public String getTitle() {
-        return title;
-    }
+    public String getProductPrice(){
+        Elements elemPrice = doc.select("#priceblock_ourprice");
+        String stringPrice = elemPrice.html().replace("&nbsp;", "");
 
-    public void setTitle(String title) {
-        this.title = title;
+        return stringPrice;
     }
-
-    public Elements getCodes(){
-        return this.codes;
-    }
-
 }
 
