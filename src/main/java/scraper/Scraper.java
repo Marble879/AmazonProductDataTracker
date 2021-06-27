@@ -2,7 +2,6 @@ package scraper;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import utils.IoUtils;
 
@@ -58,6 +57,5 @@ public class Scraper {
         return stringBeforePrice;
     }
 
-    //TODO fix output bug!
 }
 
