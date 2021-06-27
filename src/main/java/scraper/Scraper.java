@@ -47,7 +47,7 @@ public class Scraper {
     }
 
     public String receiveDiscount(){
-        Elements elemDiscount = this.doc.select("#regularprice_savings");
+        Elements elemDiscount = this.doc.select("td.a-span12.a-color-price.a-size-base.priceBlockSavingsString");
         String stringPrice = elemDiscount.html().replace("&nbsp;", "");
         return stringPrice;
     }
@@ -58,7 +58,6 @@ public class Scraper {
         return stringBeforePrice;
     }
 
-
-    //TODO check if the returned price from getProductPrice is discounted. If it is, make sure to check this, and then output to user this is price on sale.
+    //TODO fix output bug!
 }
 
