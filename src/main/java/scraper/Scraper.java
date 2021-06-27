@@ -27,29 +27,38 @@ public class Scraper {
         this.doc = doc;
     }
 
+    //TODO once connect main menu to scraper, then output messages etc should be made in menu. This class should just return values scraped from the web.
     public String getProductPrice(){
         Elements elemPrice = doc.select("#priceblock_ourprice");
         String discount;
+        String priceBeforeDiscount;
         String stringPrice = elemPrice.html().replace("&nbsp;", "");
         if(isDiscount()){
             discount = receiveDiscount();
-            stringPrice = stringPrice + IoUtils.EOL + "Discount is: " + discount + IoUtils.EOL;
+            priceBeforeDiscount = receiveBeforeDiscountPrice();
+            stringPrice = stringPrice + IoUtils.EOL + "Discount is: " + discount + IoUtils.EOL + "Price before discount is: " + priceBeforeDiscount + IoUtils.EOL;
         }
         return stringPrice;
     }
 
     public boolean isDiscount(){ // checks if there is a discount.
-        Elements elemDiscount = doc.select("#regularprice_savings");
+        Elements elemDiscount = this.doc.select("#regularprice_savings");
         return elemDiscount.size() > 0;
     }
 
     public String receiveDiscount(){
-        Elements elemDiscount = doc.select("#regularprice_savings");
+        Elements elemDiscount = this.doc.select("#regularprice_savings");
         String stringPrice = elemDiscount.html().replace("&nbsp;", "");
         return stringPrice;
     }
 
+    public String receiveBeforeDiscountPrice(){
+        Elements elemBeforePrice = this.doc.select("span.priceBlockStrikePriceString.a-text-strike");
+        String stringBeforePrice = elemBeforePrice.html().replace("&nbsp;", "");
+        return stringBeforePrice;
+    }
+
+
     //TODO check if the returned price from getProductPrice is discounted. If it is, make sure to check this, and then output to user this is price on sale.
-    //TODO if discounted is the returned one, return % of discount, return before price and mention that there is a discount!
 }
 
