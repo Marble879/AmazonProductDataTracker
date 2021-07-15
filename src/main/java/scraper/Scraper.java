@@ -28,13 +28,7 @@ public class Scraper {
     }
 
     public String getSuggestedDeliveryTime(){
-        Elements elemDeliveryTime = this.doc.select("b#mir-layout-DELIVERY_BLOCK-slot-DELIVERY_MESSAGE");
-        /* debug */
-        System.out.println(elemDeliveryTime.size());
-        for (Element elem : elemDeliveryTime){
-            System.out.println("elem: " + elem);
-        }
-        /* debug */
+        Elements elemDeliveryTime = this.doc.select("#mir-layout-DELIVERY_BLOCK-slot-DELIVERY_MESSAGE").select("b");
         String stringElemDeliveryTime = elemDeliveryTime.html();
         return "Estimated delivery time is: " + stringElemDeliveryTime;
     }
