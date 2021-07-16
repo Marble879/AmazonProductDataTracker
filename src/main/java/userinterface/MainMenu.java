@@ -18,7 +18,7 @@ public class MainMenu {
         System.out.println("Please select an option: " + IoUtils.EOL + "1. Enable notifications" + IoUtils.EOL + "2. Disable notifications" + IoUtils.EOL + "3. return" + IoUtils.EOL);
     }
 
-    public String addNewURL(){ // will be used by the addUrlMenu()
+    public String getNewURL(){ // will be used by the addUrlMenu()
         String URL;
         URL = InputClass.readLine("Please input the URL: " + IoUtils.EOL);
         return URL;

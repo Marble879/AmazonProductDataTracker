@@ -56,9 +56,13 @@ public class Controller {
         menu.invalidMenuInputMessage();
     }
 
-    private String addNewURL(){
+    private void addNewURL(){
+        String URL = getNewURL();
+        // TODO make object call that will store the url as json format.
+    }
+    private String getNewURL(){
         String URL;
-        URL = menu.addNewURL();
+        URL = menu.getNewURL();
         return URL;
     }
 
