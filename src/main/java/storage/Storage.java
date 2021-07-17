@@ -14,11 +14,21 @@ public class Storage {
             FileWriter fw = new FileWriter("urlList.json");
             new Gson().toJson(arrayList, fw);
             fw.close();
-            System.out.println(new Gson().toJson(arrayList));
         } catch (Exception e){
             e.printStackTrace();
         }
     }
 
+    public ArrayList<String> getUrlData(){
+        ArrayList<String> urlList = new ArrayList<String>();
+        try {
+            Reader reader = Files.newBufferedReader(Paths.get("urlList.json"));
+            urlList = new Gson().fromJson(reader, ArrayList.class);
+            reader.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return urlList;
+    }
 
 }
