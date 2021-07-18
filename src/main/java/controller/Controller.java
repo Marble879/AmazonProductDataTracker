@@ -2,6 +2,8 @@ package controller;
 
 import userinterface.MainMenu;
 
+import java.util.ArrayList;
+
 public class Controller {
 
     private final MainMenu menu;
@@ -59,6 +61,7 @@ public class Controller {
     private void addNewURL(){
         String URL = getNewURL();
         // TODO make object call that will store the url as json format.
+        // TODO maybe separate method: check if make new json file, or update if there is an existing file.
     }
     private String getNewURL(){
         String URL;
@@ -68,5 +71,9 @@ public class Controller {
 
     private void returningMenuMessage(){
         menu.returningMessage();
+    }
+
+    private boolean isDuplicate(ArrayList<String> urlList, String urlToAdd){
+        return urlList.contains(urlToAdd);
     }
 }
