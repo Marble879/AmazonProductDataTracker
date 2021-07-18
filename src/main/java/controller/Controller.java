@@ -1,18 +1,29 @@
 package controller;
 
+import storage.Storage;
 import userinterface.MainMenu;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class Controller {
 
     private final MainMenu menu;
+    private Storage storage;
+    private ArrayList<String> urlList;
 
-    public Controller(MainMenu menu){
+    public Controller(MainMenu menu, Storage storage){
         this.menu = menu;
+        this.storage = storage;
+        this.urlList = new ArrayList<String>();
+    }
+
+    public ArrayList<String> getUrlList(){
+        return this.urlList;
     }
 
     public void startMainMenuScreen() throws Exception{
+        loadUrlListIfExists();
         displayStartMenu();
     }
 
@@ -59,10 +70,15 @@ public class Controller {
     }
 
     private void addNewURL(){
-        String URL = getNewURL();
-        // TODO make object call that will store the url as json format.
-        // TODO maybe separate method: check if make new json file, or update if there is an existing file.
+        String url = getNewURL();
+        if (!isDuplicate(url)){
+            this.urlList.add(url);
+            storage.saveToJson(this.urlList);
+        } else {
+            System.out.println("This URL already exists!");
+        }
     }
+
     private String getNewURL(){
         String URL;
         URL = menu.getNewURL();
@@ -73,7 +89,18 @@ public class Controller {
         menu.returningMessage();
     }
 
-    private boolean isDuplicate(ArrayList<String> urlList, String urlToAdd){
-        return urlList.contains(urlToAdd);
+    private boolean isDuplicate(String urlToAdd){
+        return this.urlList.contains(urlToAdd);
+    }
+
+    private void loadUrlListIfExists(){
+        if(doesFileExist()){
+            this.urlList = storage.getUrlData();
+        }
+    }
+
+    private boolean doesFileExist(){
+        File urlListFile = new File("urlList.json");
+        return urlListFile.exists();
     }
 }

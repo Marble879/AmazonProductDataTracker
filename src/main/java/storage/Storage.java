@@ -28,7 +28,7 @@ public class Storage {
             reader.close();
         } catch (Exception e){
             if (e instanceof NoSuchFileException){
-                System.out.println("ERROR: url list file not found! Please save your URLs for the file to become available");
+                System.out.println("Url list file not found! Please save your URLs for the file to become available");
             } else {
                 e.printStackTrace();
             }
