@@ -37,7 +37,7 @@ public class MainMenu {
     }
 
     public void viewTrackedItems(){
-        System.out.println("Currently tracked items: ");
+        System.out.println("Currently tracked items: " + IoUtils.EOL);
     }
 
     public void invalidMenuInputMessage(){

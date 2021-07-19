@@ -2,7 +2,6 @@ package scraper;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import utils.IoUtils;
 
@@ -34,7 +33,6 @@ public class Scraper {
     }
 
 
-    //TODO once connect main menu to scraper, then output messages etc should be made in menu. This class should just return values scraped from the web.
     public String getProductPrice(){
         Elements elemPrice = doc.select("#priceblock_ourprice");
         String stringPrice = elemPrice.html().replace("&nbsp;", "");

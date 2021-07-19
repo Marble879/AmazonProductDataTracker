@@ -1,9 +1,12 @@
 package controller;
 
+import scraper.Scraper;
 import storage.Storage;
 import userinterface.MainMenu;
+import utils.IoUtils;
 
 import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class Controller {
@@ -55,6 +58,22 @@ public class Controller {
 
     private void viewTrackedItems(){
         menu.viewTrackedItems();
+        System.out.println(getAllTrackedProductInfo());
+    }
+
+    private String getAllTrackedProductInfo(){
+        if (this.urlList != null && !this.urlList.isEmpty()) {
+            String trackedProductInfo = "";
+            Scraper scraper;
+            for (String url : this.urlList){
+                scraper = new Scraper(url);
+                trackedProductInfo = scraper.getProductPrice() + IoUtils.EOL + scraper.getSuggestedDeliveryTime() + IoUtils.EOL;
+            }
+            return trackedProductInfo;
+        } else {
+            return "No products are currently being tracked!";
+        }
+
     }
 
     private void exitingMessage(){
