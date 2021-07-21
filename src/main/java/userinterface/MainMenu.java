@@ -18,10 +18,16 @@ public class MainMenu {
         System.out.println("Please select an option: " + IoUtils.EOL + "1. Enable notifications" + IoUtils.EOL + "2. Disable notifications" + IoUtils.EOL + "3. return" + IoUtils.EOL);
     }
 
-    public String getNewURL(){ // will be used by the addUrlMenu()
-        String URL;
-        URL = InputClass.readLine("Please input the URL: " + IoUtils.EOL);
-        return URL;
+    public String getNewUrl(){ // will be used by the addUrlMenu()
+        String url;
+        url = InputClass.readLine("Please input the URL: " + IoUtils.EOL);
+        return url;
+    }
+
+    public String getNewUrlName(){
+        String name;
+        name = InputClass.readLine("Please input the name of the URL: " + IoUtils.EOL);
+        return name;
     }
 
     public void addEmailAddressMessage() { // Will be used by setupNotiicationsMenu()

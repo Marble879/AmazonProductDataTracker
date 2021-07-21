@@ -1,6 +1,7 @@
 package controller;
 
 import scraper.Scraper;
+import scraper.Url;
 import storage.Storage;
 import userinterface.MainMenu;
 import utils.IoUtils;
@@ -13,15 +14,15 @@ public class Controller {
 
     private final MainMenu menu;
     private Storage storage;
-    private ArrayList<String> urlList;
+    private ArrayList<Url> urlList;
 
     public Controller(MainMenu menu, Storage storage){
         this.menu = menu;
         this.storage = storage;
-        this.urlList = new ArrayList<String>();
+        this.urlList = new ArrayList<Url>();
     }
 
-    public ArrayList<String> getUrlList(){
+    public ArrayList<Url> getUrlList(){
         return this.urlList;
     }
 
@@ -65,13 +66,13 @@ public class Controller {
         if (this.urlList != null && !this.urlList.isEmpty()) {
             String trackedProductInfo = "";
             Scraper scraper;
-            for (String url : this.urlList){
-                scraper = new Scraper(url);
+            for (Url url : this.urlList){
+                scraper = new Scraper(url.getUrl());
                 trackedProductInfo = scraper.getProductPrice() + IoUtils.EOL + scraper.getSuggestedDeliveryTime() + IoUtils.EOL;
             }
             return trackedProductInfo;
         } else {
-            return "No products are currently being tracked!";
+            return "No products are currently being tracked! " + IoUtils.EOL;
         }
 
     }
@@ -89,8 +90,8 @@ public class Controller {
     }
 
     private void addNewURL(){
-        String url = getNewURL();
-        if (!isDuplicate(url)){
+        Url url = getNewURL();
+        if (!isDuplicate(url.getUrl())){
             this.urlList.add(url);
             storage.saveToJson(this.urlList);
         } else {
@@ -98,10 +99,9 @@ public class Controller {
         }
     }
 
-    private String getNewURL(){
-        String URL;
-        URL = menu.getNewURL();
-        return URL;
+    private Url getNewURL(){
+        Url url = new Url(menu.getNewUrl(), menu.getNewUrlName());
+        return url;
     }
 
     private void returningMenuMessage(){
