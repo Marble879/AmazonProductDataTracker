@@ -1,12 +1,12 @@
 package scraper;
 
-public class UrlWrapper {
+public class Url {
 
     String url;
     String productName;
 
 
-    public UrlWrapper(String url, String productName){
+    public Url(String url, String productName){
         this.url = url;
         this.productName = productName;
     }
