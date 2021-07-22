@@ -4,6 +4,7 @@ import scraper.Scraper;
 import scraper.Url;
 import storage.Storage;
 import userinterface.MainMenu;
+import utils.InputClass;
 import utils.IoUtils;
 
 import java.io.File;
@@ -38,11 +39,27 @@ public class Controller {
             switch (choice) {
                 case 1 -> viewTrackedItems();
                 case 2 -> addUrlMenu();
-                //case 3 -> setupNotificationsMenu();
+                case 3 -> removeUrlMenu();
                 case 4 -> exitingMessage();
                 default -> invalidMenuInputMessage();
             }
         } while (!(choice == 4));
+    }
+
+    public void removeUrlMenu() throws Exception{
+        menu.removeUrlMenu();
+        String urlOptionsOutput = "";
+        if (this.urlList != null && !this.urlList.isEmpty()){
+            for (int i = 0; i < this.urlList.size(); i++){
+                urlOptionsOutput = urlOptionsOutput + (i+1) +". " + this.urlList.get(i).getProductName() + IoUtils.EOL;
+            }
+            System.out.println(urlOptionsOutput);
+            int choice = InputClass.readInt("Input number of the url to remove: ");
+            choice--; // need to reduce the value by one to be consistent with array index numbers
+            removeUrl(choice);
+        } else {
+            System.out.println("No urls have been added yet!");
+        }
     }
 
     private void addUrlMenu() throws Exception{
@@ -121,5 +138,10 @@ public class Controller {
     private boolean doesFileExist(){
         File urlListFile = new File("urlList.json");
         return urlListFile.exists();
+    }
+
+    private void removeUrl(int index){
+        this.urlList.remove(index);
+        storage.saveToJson(this.urlList);
     }
 }
