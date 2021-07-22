@@ -68,7 +68,7 @@ public class Controller {
             Scraper scraper;
             for (Url url : this.urlList){
                 scraper = new Scraper(url.getUrl());
-                trackedProductInfo = scraper.getProductPrice() + IoUtils.EOL + scraper.getSuggestedDeliveryTime() + IoUtils.EOL;
+                trackedProductInfo = trackedProductInfo + url.getProductName() + IoUtils.EOL + scraper.getProductPrice() + IoUtils.EOL + scraper.getSuggestedDeliveryTime() + IoUtils.EOL + IoUtils.OUTPUT_LINE + IoUtils.EOL;
             }
             return trackedProductInfo;
         } else {
