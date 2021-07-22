@@ -1,5 +1,7 @@
 package storage;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import scraper.Url;
 
 import java.io.FileWriter;
 import java.io.Reader;
@@ -10,7 +12,7 @@ import java.util.ArrayList;
 
 public class Storage {
 
-    public void saveToJson(ArrayList<String> arrayList) {
+    public void saveToJson(ArrayList<Url> arrayList) {
         try {
             FileWriter fw = new FileWriter("urlList.json");
             new Gson().toJson(arrayList, fw);
@@ -20,11 +22,11 @@ public class Storage {
         }
     }
 
-    public ArrayList<String> getUrlData(){
-        ArrayList<String> urlList = new ArrayList<String>();
+    public ArrayList<Url> getUrlData(){
+        ArrayList<Url> urlList = new ArrayList<Url>();
         try {
             Reader reader = Files.newBufferedReader(Paths.get("urlList.json"));
-            urlList = new Gson().fromJson(reader, ArrayList.class);
+            urlList = (ArrayList<Url>) new Gson().fromJson(reader, new TypeToken<ArrayList<Url>>() {}.getType());
             reader.close();
         } catch (Exception e){
             if (e instanceof NoSuchFileException){
