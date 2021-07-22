@@ -38,7 +38,7 @@ public class Controller {
             switch (choice) {
                 case 1 -> viewTrackedItems();
                 case 2 -> addUrlMenu();
-                case 3 -> setupNotificationsMenu();
+                //case 3 -> setupNotificationsMenu();
                 case 4 -> exitingMessage();
                 default -> invalidMenuInputMessage();
             }
